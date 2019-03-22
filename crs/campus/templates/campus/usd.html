@@ -1,0 +1,80 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+.topnav {
+  overflow: hidden;
+  background-color: black;
+}
+
+.active
+{background-color: black;
+   padding-left: 5rem;
+    padding-right: 5rem;
+    color: #aba8a8;
+
+}
+
+.d{
+    padding-left: 3rem;
+    padding-right: 3rem;
+    font-family: Comic Sans MS, cursive, sans-serif;
+    font-size: 1.5rem;
+    color: #aba8a8;
+}
+</style>
+
+<table class="topnav" >
+<tr>
+<td class="d">
+  <a class="active" href="http://127.0.0.1:8000/">Home</a>
+</td>
+<td class="d">
+    <a  class="active" href="http://127.0.0.1:8000/student/student_login/"  >student login</a>
+</td>
+    <td class="d">
+        <a  class="active" href=" http://127.0.0.1:8000/company/company_login/  ">comapny login</a>
+</td>
+<td class="d" style="padding-left: 5rem">
+    {% if user.is_authenticated %}
+
+        <a href="http://127.0.0.1:8000/logout/">Hi {{ user.username }}! logout</a>
+
+{% else %}
+  <p >You are not logged in</p>
+    {% endif %}
+</td>
+</tr>
+</table>
+
+</head>
+     <h1>modify details</h1>
+
+    {% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
+
+
+         <form method="post" >
+            {% csrf_token %}
+             <table>
+                 <tr><th><label for="id_sop">Sop:</label></th><td><textarea rows="10" cols="50" name="sop"  maxlength="500" required id="id_sop">{{ x }}</textarea></td></tr>
+<tr><th><label for="id_phone_number">Phone number:</label></th><td><input type="text" name="phone_number" value={{ y }} maxlength="10" minlength="10" required id="id_phone_number"></td></tr>
+                 <tr>
+                    <td></td>
+                     <td><br><button type="submit" name="submit" value="Register" style="font-size: 1.5rem;font-family: Comic Sans MS, cursive, sans-serif" >MODIFY</button></td>
+                </tr>
+             </table>
+         </form>
+

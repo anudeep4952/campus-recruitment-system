@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>POSTED VACANCIES</title>
+
+<style>
+
+.topnav {
+  overflow: hidden;
+  background-color: black;
+}
+
+.active
+{background-color: black;
+   padding-left: 5rem;
+    padding-right: 5rem;
+    color: #aba8a8;
+
+}
+
+.d{
+    padding-left: 3rem;
+    padding-right: 3rem;
+    font-family: Comic Sans MS, cursive, sans-serif;
+    font-size: 1.5rem;
+    color: #aba8a8;
+}
+</style>
+
+<table class="topnav" >
+<tr>
+<td class="d">
+  <a class="active" href="http://127.0.0.1:8000/">Home</a>
+</td>
+<td class="d">
+    <a  class="active" href="http://127.0.0.1:8000/student/student_login/"  >student login</a>
+</td>
+    <td class="d">
+        <a  class="active" href=" http://127.0.0.1:8000/company/company_login/  ">comapny login</a>
+</td>
+<td class="d" style="padding-left: 5rem">
+    {% if user.is_authenticated %}
+
+        <a href="http://127.0.0.1:8000/logout/">Hi {{ user.username }}! logout</a>
+
+{% else %}
+  <p >You are not logged in</p>
+    {% endif %}
+</td>
+</tr>
+</table>
+
+</head>
+<body style="font-size: 1rem;font-family: Comic Sans MS, cursive, sans-serif;background-color: dimgrey">
+<h1>{{s}}</h1>
+<center><h1 style="font-size:3rem;color: #bd2130">POSTED VACANCIES</h1></center>
+<form method="post">
+     {% csrf_token %}
+    <table border="1px" style="text-align: center;border-collapse: collapse;background-color:blanchedalmond" width="100%"   >
+        <tr >
+            <th style="font-size:1.5rem;color: #ffc107">job id</th>
+            <th style="font-size:1.5rem;color: #ffc107">designation</th>
+                 <th style="font-size:1.5rem;color: #ffc107">salary</th>
+            <th style="font-size:1.5rem;color: #ffc107">bond_years</th>
+            <th style="font-size:1.5rem;color: #ffc107">IT</th>
+            <th style="font-size:1.5rem;color: #ffc107">mech</th>
+            <th style="font-size:1.5rem;color: #ffc107">civil</th>
+            <th style="font-size:1.5rem;color: #ffc107">ece</th>
+            <th style="font-size:1.5rem;color: #ffc107">eee</th>
+            <th style="font-size:1.5rem;color: #ffc107">cse</th>
+            <th style="font-size:1.5rem;color: #ffc107">chemical</th>
+
+
+
+        </tr>
+        {%  for i in y %}
+        <tr>
+            <td>{{ i.job_id }}</td>
+        <td>{{ i.designation }}</td>
+        <td>{{ i.salary }}</td>
+        <td>{{ i.bond_years }}</td>
+        <td>{{ i.information_technology }}</td>
+        <td>{{ i.mech }}</td>
+        <td>{{ i.civil }}</td>
+        <td>{{ i.ece }}</td>
+        <td>{{ i.eee }}</td>
+        <td>{{ i.cse }}</td>
+        <td>{{ i.chemical }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+
+</form>
+</body>
+</html>

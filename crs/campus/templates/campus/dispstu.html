@@ -1,0 +1,72 @@
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+.topnav {
+  overflow: hidden;
+  background-color: black;
+}
+
+.active
+{background-color: black;
+   padding-left: 5rem;
+    padding-right: 5rem;
+    color: #aba8a8;
+
+}
+
+.d{
+    padding-left: 3rem;
+    padding-right: 3rem;
+    font-family: Comic Sans MS, cursive, sans-serif;
+    font-size: 1.5rem;
+    color: #aba8a8;
+}
+</style>
+
+<table class="topnav" >
+<tr>
+<td class="d">
+  <a class="active" href="http://127.0.0.1:8000/">Home</a>
+</td>
+<td class="d">
+    <a  class="active" href="http://127.0.0.1:8000/student/student_login/"  >student login</a>
+</td>
+    <td class="d">
+        <a  class="active" href=" http://127.0.0.1:8000/company/company_login/  ">comapny login</a>
+</td>
+<td class="d" style="padding-left: 5rem">
+    {% if user.is_authenticated %}
+
+        <a href="http://127.0.0.1:8000/logout/">Hi {{ user.username }}! logout</a>
+
+{% else %}
+  <p >You are not logged in</p>
+    {% endif %}
+</td>
+</tr>
+</table>
+</head>
+
+<form method="get">
+    {% csrf_token %}
+    <h1>PROFILE</h1>
+    <p>reg num:<b>{{ post.username }}</b></p>
+    <p>name :<b>{{ post.name}}</b></p>
+    <p>father's name:<b>{{ post.fathers_name}}</b></p>
+    <p>mother's name:<b>{{ post.mothers_name}}</b></p>
+    <p>gender:<b>{{ post.gender}}</b></p>
+    <p>place:<b>{{ post.place}}</b></p>
+    <p>branch:<b>{{ post.branch}}</b></p>
+    <p>Btech(cgpa):<b>{{ post.cgpa_Btech}}</b></p>
+    <p>10 class(cgpa):<b>{{ post.class_10_cgpa}}</b></p>
+    <p>12 class(cgpa):<b>{{ post.class_12_percentage}}</b></p>
+    <p>certifications count:<b>{{ post.certifications_count}}</b></p>
+    <p>internship:<b>{{ post.internship}}</b></p>
+    <p>languages:<b>{{ post.languages}}</b></p>
+    <p>sop:<b>{{ post.sop}}</b></p>
+    <p>dob:<b>{{ post.dob}}</b></p>
+
+
+</form>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{%load static %}
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'campus/theme.css' %}" type="text/css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+.topnav {
+  overflow: hidden;
+  background-color: black;
+}
+
+.active
+{background-color: black;
+   padding-left: 5rem;
+    padding-right: 5rem;
+    color: #aba8a8;
+
+}
+
+.d{
+    padding-left: 3rem;
+    padding-right: 3rem;
+    font-family: Comic Sans MS, cursive, sans-serif;
+    font-size: 1.5rem;
+    color: #aba8a8;
+}
+</style>
+
+<table class="topnav" >
+<tr>
+<td class="d">
+  <a class="active" href="http://127.0.0.1:8000/">Home</a>
+</td>
+<td class="d">
+    <a  class="active" href="http://127.0.0.1:8000/student/student_login/"  >student login</a>
+</td>
+    <td class="d">
+        <a  class="active" href="http://127.0.0.1:8000/company/company_login/" >comapny login</a>
+</td>
+<td class="d" style="padding-left: 7.23rem">
+    {% if user.is_authenticated %}
+
+        <a href="http://127.0.0.1:8000/logout/">Hi {{ user.username }}! logout</a>
+
+{% else %}
+  <p >You are not logged in</p>
+    {% endif %}
+</td>
+</tr>
+</table>
+
+
+</head>
+<body>
+
+<h1 style="" class="display-4 border-warning text-muted mx-5 mb-4 pos1" >Campus Recruitment System</h1>
+
+<p class="lead w-100 mb-5 my-5 text-warning pos2">"All our dreams can come true if we have the courage to pursue them" -Walt Disney</p>
+
+<table class="pos3">
+    <tr>
+<td><a href="http://127.0.0.1:8000/student/student_login/ " class="btn btn-lg btn-primary mx-5 d-inline-flex "><b><i>STUDENT</i></b></a></td>
+<td><a href="http://127.0.0.1:8000/admin " class="btn btn-lg btn-primary mx-5 d-inline-flex"><b><i>ADMIN</i></b></a></td>
+<td><a href="http://127.0.0.1:8000/company/company_login/ " class="btn btn-lg btn-primary mx-5 d-inline-flex"><b><i>COMPANY</i></b></a></td>
+    </tr>
+</table>
+</body>
+</html>

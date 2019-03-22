@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DELETE VACANCY</title>
+
+<style>
+
+.topnav {
+  overflow: hidden;
+  background-color: black;
+}
+
+.active
+{background-color: black;
+   padding-left: 5rem;
+    padding-right: 5rem;
+    color: #aba8a8;
+
+}
+
+.d{
+    padding-left: 3rem;
+    padding-right: 3rem;
+    font-family: Comic Sans MS, cursive, sans-serif;
+    font-size: 1.5rem;
+    color: #aba8a8;
+}
+</style>
+
+<table class="topnav" >
+<tr>
+<td class="d">
+  <a class="active" href="http://127.0.0.1:8000/">Home</a>
+</td>
+<td class="d">
+    <a  class="active" href="http://127.0.0.1:8000/student/student_login/"  >student login</a>
+</td>
+    <td class="d">
+        <a  class="active" href=" http://127.0.0.1:8000/company/company_login/  ">comapny login</a>
+</td>
+<td class="d" style="padding-left: 5rem">
+    {% if user.is_authenticated %}
+
+        <a href="http://127.0.0.1:8000/logout/">Hi {{ user.username }}! logout</a>
+
+{% else %}
+  <p >You are not logged in</p>
+    {% endif %}
+</td>
+</tr>
+</table>
+
+</head>
+<body>
+<h1>{{ s }}</h1>
+<form method="post">
+     {% csrf_token %}
+
+    job id:<input type="text" size="10" name="jobid" placeholder="job id to delete" style="font-size: 1rem;font-family: Comic Sans MS, cursive, sans-serif"><br>
+    <input type="submit" value="delete" style="font-size: 1rem;font-family: Comic Sans MS, cursive, sans-serif">
+</form>
+</body>
+</html>

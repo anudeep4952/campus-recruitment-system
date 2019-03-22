@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SELECT STUDENTS</title>
+
+<style>
+
+.topnav {
+  overflow: hidden;
+  background-color: black;
+}
+
+.active
+{background-color: black;
+   padding-left: 5rem;
+    padding-right: 5rem;
+    color: #aba8a8;
+
+}
+
+.d{
+    padding-left: 3rem;
+    padding-right: 3rem;
+    font-family: Comic Sans MS, cursive, sans-serif;
+    font-size: 1.5rem;
+    color: #aba8a8;
+}
+</style>
+
+<table class="topnav" >
+<tr>
+<td class="d">
+  <a class="active" href="http://127.0.0.1:8000/">Home</a>
+</td>
+<td class="d">
+    <a  class="active" href="http://127.0.0.1:8000/student/student_login/"  >student login</a>
+</td>
+    <td class="d">
+        <a  class="active" href=" http://127.0.0.1:8000/company/company_login/  ">comapny login</a>
+</td>
+<td class="d" style="padding-left: 5rem">
+    {% if user.is_authenticated %}
+
+        <a href="http://127.0.0.1:8000/logout/">Hi {{ user.username }}! logout</a>
+
+{% else %}
+  <p >You are not logged in</p>
+    {% endif %}
+</td>
+</tr>
+</table>
+
+</head>
+<body style="font-size: 1rem;font-family: Comic Sans MS, cursive, sans-serif;background-color: dimgrey">
+<h1 style="color: darkred">{{ s }}</h1>
+<center><h1 style="font-size: 4rem;color: #bd2130">SELECT STUDENTS</h1></center>
+<form method="post">
+     {% csrf_token %}
+  <table style="text-align: left;">
+      <tr><th>JOB ID:<input type="text"  size="10" name="jobid" required  style="font-size: 1rem;font-family: Comic Sans MS, cursive, sans-serif"></th></tr>
+      <tr><th>10th cgpa:<input type="number" step="0.01" size="10" name="tenth" min="0" required max="10"  style="font-size: 1rem;font-family: Comic Sans MS, cursive, sans-serif" value="0"></th></tr>
+      <tr><th>12th percentage:<input type="number" step="0.01" size="10" name="twth" min="0" required max="100" value="0"  style="font-size: 1rem;font-family: Comic Sans MS, cursive, sans-serif"></th></tr>
+      <tr><th>Btech cgpa:<input type="number" step="0.01" size="10" name="btech" value="0" min="0" required max="10"  style="font-size: 1rem;font-family: Comic Sans MS, cursive, sans-serif"></th></tr>
+
+  </table>
+<input type="submit" value="SEARCH">
+     <table border="1px" style="text-align: center;border-collapse: collapse;background-color:blanchedalmond;padding-top: 40%; width: 100%" >
+        <tr >
+            <th style="font-size:1.5rem;color: #ffc107">name</th>
+            <th style="font-size:1.5rem;color: #ffc107">gender</th>
+            <th style="font-size:1.5rem;color: #ffc107">branch</th>
+            <th style="font-size:1.5rem;color: #ffc107">10th cgpa</th>
+            <th style="font-size:1.5rem;color: #ffc107">12th percentage</th>
+            <th style="font-size:1.5rem;color: #ffc107">Btech cgpa</th>
+            <th style="font-size:1.5rem;color: #ffc107">certifications count</th>
+            <th style="font-size:1.5rem;color: #ffc107">internship</th>
+            <th style="font-size:1.5rem;color:darkred">APPLY</th>
+
+        </tr>
+
+         {%  for l in y %}
+             {% for i in l %}
+        <tr>
+            <td>{{ i.name }}</td>
+        <td>{{ i.branch }}</td>
+        <td>{{ i.gender }}</td>
+        <td>{{ i.class_10_cgpa }}</td>
+            <td>{{ i.class_12_percentage }}</td>
+            <td>{{ i.cgpa_Btech }}</td>
+            <td>{{ i.certifications_count }}</td>
+            <td>{{ i.internship }}</td>
+            <td><a href="http://127.0.0.1:8000/company/company_login/selectstu/{{ i.username}}/" target="popup" onclick="window.open('http://127.0.0.1:8000/company/company_login/selectstu/{{ i.username}}/','popup','width=600,height=600'); return false;" style="font-family: Comic Sans MS, cursive, sans-serif">APPLY</a></td>
+        </tr>
+        {% endfor %}
+         {% endfor %}
+    </table>
+
+
+</form>
+</body>
+</html>

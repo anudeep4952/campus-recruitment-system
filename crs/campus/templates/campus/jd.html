@@ -1,0 +1,159 @@
+
+<html>
+<head>
+<title>post job</title>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+.topnav {
+  overflow: hidden;
+  background-color: black;
+}
+
+.active
+{background-color: black;
+   padding-left: 5rem;
+    padding-right: 5rem;
+    color: #aba8a8;
+
+}
+
+.d{
+    padding-left: 3rem;
+    padding-right: 3rem;
+    font-family: Comic Sans MS, cursive, sans-serif;
+    font-size: 1.5rem;
+    color: #aba8a8;
+}
+</style>
+
+<table class="topnav" >
+<tr>
+<td class="d">
+  <a class="active" href="http://127.0.0.1:8000/">Home</a>
+</td>
+<td class="d">
+    <a  class="active" href="http://127.0.0.1:8000/student/student_login/"  >student login</a>
+</td>
+    <td class="d">
+        <a  class="active" href=" http://127.0.0.1:8000/company/company_login/  ">comapny login</a>
+</td>
+<td class="d" style="padding-left: 5rem">
+    {% if user.is_authenticated %}
+
+        <a href="http://127.0.0.1:8000/logout/">Hi {{ user.username }}! logout</a>
+
+{% else %}
+  <p >You are not logged in</p>
+    {% endif %}
+</td>
+</tr>
+</table>
+</head>
+
+
+<body>
+<h1>{{ s }}</h1>
+<form method="post" >
+
+
+         {% if messages %}
+            <ul>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+
+       {% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
+
+
+
+    {% csrf_token %}
+    <center><h1 style="font-size: 3.5rem;font-family: Comic Sans MS, cursive, sans-serif;color: #3a3636">UPDATE VACANCY</h1></center>
+
+    <table>
+    <tr><th></th><td><input type="hidden" name="company_name"  size="36" maxlength="30" required id="id_company_name" value={{ y }}  ></td></tr>
+<tr><th></th><td><input type="hidden" name="username" maxlength="30" required id="id_username" value={{ x }} > </td></tr><br>
+<tr><th><label for="id_job_id">Job id:</label></th><td><input type="text" name="job_id" maxlength="30" required id="id_job_id"><span class="helptext">*required</span></td></tr><br>
+<tr><th><label for="id_designation">Designation:</label></th><td><input type="text" name="designation" maxlength="30" required id="id_designation"><span class="helptext">*required</span></td></tr><br>
+<tr><th><label for="id_salary">Salary:</label></th><td><input type="number" name="salary" required id="id_salary"><span class="helptext">*required</span></td></tr><br>
+<tr><th><label for="id_bond_years">Bond years:</label></th><td><input type="number" name="bond_years" required id="id_bond_years"><span class="helptext">*required</span></td></tr><br>
+<tr><th><label for="id_information_technology">Information technology:</label></th><td><select name="information_technology" required id="id_information_technology">
+  <option value="" selected>---------</option>
+
+  <option value="yes">yes</option>
+
+  <option value="no">no</option>
+
+</select></td></tr>
+<tr><th><label for="id_mech">Mech:</label></th><td><select name="mech" required id="id_mech">
+  <option value="" selected>---------</option>
+
+  <option value="yes">yes</option>
+
+  <option value="no">no</option>
+
+</select></td></tr>
+<tr><th><label for="id_civil">Civil:</label></th><td><select name="civil" required id="id_civil">
+  <option value="" selected>---------</option>
+
+  <option value="yes">yes</option>
+
+  <option value="no">no</option>
+
+</select></td></tr>
+<tr><th><label for="id_eee">Eee:</label></th><td><select name="eee" required id="id_eee">
+  <option value="" selected>---------</option>
+
+  <option value="yes">yes</option>
+
+  <option value="no">no</option>
+
+</select></td></tr>
+<tr><th><label for="id_ece">Ece:</label></th><td><select name="ece" required id="id_ece">
+  <option value="" selected>---------</option>
+
+  <option value="yes">yes</option>
+
+  <option value="no">no</option>
+
+</select></td></tr>
+<tr><th><label for="id_chemical">Chemical:</label></th><td><select name="chemical" required id="id_chemical">
+  <option value="" selected>---------</option>
+
+  <option value="yes">yes</option>
+
+  <option value="no">no</option>
+
+</select></td></tr>
+<tr><th><label for="id_cse">Cse:</label></th><td><select name="cse" required id="id_cse">
+  <option value="" selected>---------</option>
+
+  <option value="yes">yes</option>
+
+  <option value="no">no</option>
+
+</select></td></tr>
+
+    <br></table>
+<button type="submit" style="font-size: 1rem;font-family: Comic Sans MS, cursive, sans-serif">Submit</button>
+</form>
+</body>
+</html>

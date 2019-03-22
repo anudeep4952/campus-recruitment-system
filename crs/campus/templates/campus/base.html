@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}CRS :: Admin Panel{% endblock %}</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <link rel="stylesheet" href="{% static 'campus/style.css' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+ {% extends 'campus/menu.html' %}
+</head>
+<body>
+
+ <div class="login">
+
+         {% if messages %}
+            <ul>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <h1>Create account - STUDENT</h1>
+
+         <form method="post" >
+             {% csrf_token %}
+             <table>
+                {{ form.as_table }}
+                 <tr>
+                    <td></td>
+                     <td><button type="submit" name="submit" value="Register" style="font-size: 1.5rem;font-family: Comic Sans MS, cursive, sans-serif" >REGISTER</button></td>
+                </tr>
+             </table>
+         </form>
+     </div>
+
+
+    <div class="footer">
+        <div class="section-inner clearfix">
+            <p>&copy; CRS any quiries contact anudeep.insvirat@gmail.com</p>
+        </div>
+    </div>
+
+</body>
+</html>

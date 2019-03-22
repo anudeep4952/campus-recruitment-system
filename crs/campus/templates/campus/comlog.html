@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+{%load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>STUDENT OPTIONS</title>
+    <link rel="stylesheet" href="{% static 'campus/theme.css' %}" type="text/css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}CRS :: Admin Panel{% endblock %}</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <link rel="stylesheet" href="{% static 'campus/style.css' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+.topnav {
+  overflow: hidden;
+  background-color: black;
+}
+
+.pos2{
+    position: absolute;
+    top:16rem;
+    left: 37rem;
+}
+
+
+.active
+{background-color: black;
+   padding-left: 5rem;
+    padding-right: 5rem;
+    color: #aba8a8;
+
+}
+
+.d{
+    padding-left: 3rem;
+    padding-right: 3rem;
+    font-family: Comic Sans MS, cursive, sans-serif;
+    font-size: 1.5rem;
+    color: #aba8a8;
+}
+
+</style>
+
+<table class="topnav" >
+<tr>
+<td class="d">
+  <a class="active" href="http://127.0.0.1:8000/">Home</a>
+</td>
+<td class="d">
+    <a  class="active" href="http://127.0.0.1:8000/student/student_login/"  >student login</a>
+</td>
+    <td class="d">
+        <a  class="active" href="http://127.0.0.1:8000/company/company_login/  ">comapny login</a>
+</td>
+<td class="d" style="padding-left: 7rem">
+    {% if user.is_authenticated %}
+
+        <a href="http://127.0.0.1:8000/logout/">Hi {{ user.username }}! logout</a>
+
+{% else %}
+  <p >You are not logged in</p>
+    {% endif %}
+</td>
+</tr>
+</table>
+</head>
+
+
+<body>
+
+
+
+
+
+<h1>{{ s }}</body></h1>
+
+<table class="pos2">
+    <tr>
+        <td  ><a href=" http://127.0.0.1:8000/company/company_login/jp/  " class="btn btn-lg btn-primary mx-5 d-inline-flex "><b style="font-size: 2rem"><i>post vacancy</i></b></a></td></tr><tr>
+    <td ><a href="http://127.0.0.1:8000/company/company_login/jd/  " class="btn btn-lg btn-primary mx-5 d-inline-flex"><b style="font-size: 2rem"><i>update vacancy</i></b></a></td></tr><tr>
+<td ><a href=" http://127.0.0.1:8000/company/company_login/selectstu/ " class="btn btn-lg btn-primary mx-5 d-inline-flex"><b style="font-size: 2rem"><i>select students</i></b></a></td>
+  <tr>  <td ><a href=" http://127.0.0.1:8000/company/company_login/ccd/ " class="btn btn-lg btn-primary mx-5 d-inline-flex"><b style="font-size: 2rem"><i>update details</i></b></a></td>
+
+    </tr>
+    <tr>  <td ><a href=" http://127.0.0.1:8000/company/company_login/deletevacan/ " class="btn btn-lg btn-primary mx-5 d-inline-flex"><b style="font-size: 2rem"><i>delete vacancy</i></b></a></td>
+
+    </tr>
+    <tr>  <td ><a href=" http://127.0.0.1:8000/company/company_login/viewpos/ " class="btn btn-lg btn-primary mx-5 d-inline-flex"><b style="font-size: 2rem"><i>posted vacancies</i></b></a></td>
+
+    </tr>
+</table>
+
+</body>
+</html>

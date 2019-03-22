@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+{%load static %}
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'campus/style1.css' %}" type="text/css">
+
+   <style>
+
+.topnav {
+  overflow: hidden;
+  background-color: black;
+}
+
+.active
+{background-color: black;
+   padding-left: 5rem;
+    padding-right: 5rem;
+    color: #aba8a8;
+
+}
+
+.d{
+    padding-left: 3rem;
+    padding-right: 3rem;
+    font-family: Comic Sans MS, cursive, sans-serif;
+    font-size: 1.5rem;
+    color: #aba8a8;
+}
+</style>
+
+<table class="topnav" >
+<tr>
+<td class="d">
+  <a class="active" href="http://127.0.0.1:8000/">Home</a>
+</td>
+<td class="d">
+    <a  class="active" href="http://127.0.0.1:8000/student/student_login/"  >student login</a>
+</td>
+    <td class="d">
+        <a  class="active" href="http://127.0.0.1:8000/company/company_login/" >comapny login</a>
+</td>
+<td class="d" style="padding-left: 7.23rem">
+    {% if user.is_authenticated %}
+
+        <a href="http://127.0.0.1:8000/logout/">Hi {{ user.username }}! logout</a>
+
+{% else %}
+  <p >You are not logged in</p>
+    {% endif %}
+</td>
+</tr>
+</table>
+
+
+</head>
+<p style="color: black;font-size: 3rem; position:absolute;top:50px;left: 550px">
+STUDENT LOGIN
+    </p>
+<table class="hi">
+    <tr>
+
+     <form method="post">
+{% csrf_token %}
+{{form.as_table}}
+
+
+    <tr>  <td><p><button type="submit"  class="btn btn-lg btn-primary  d-inline-flex " style="font-family: Comic Sans MS, cursive, sans-serif" >Login</button></p></td></tr>
+</form>
+        </tr>
+        <tr>
+        <td><center>
+<a href="http://127.0.0.1:8000/student/student_register " class=" d-inline-flex "  style="color:deepskyblue"><b><i>New user register</i></b></a>
+        </center></td>
+</tr>
+</table>
+</html>
